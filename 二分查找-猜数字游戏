@@ -1,0 +1,37 @@
+/*
+Alice在纸上写下一个1~100范围内的整数x，让Bob猜这个数是什么。
+Bob每猜一次，Alice会回答“猜大了” “猜小了”或 “猜对了”。
+Bob怎样才能用最少的次数猜对呢？
+*/
+#include <iostream>
+int left=1,mid,right=100,ans=1;
+int search (int n)
+{
+	while(left<right)
+	{
+		mid=(left+right)/2;
+		if(mid==n)
+		{
+			return ans;
+		}
+		if(mid<n)
+		{
+			left=mid;
+			ans++;
+		}
+		if(mid>n)
+		{
+			right=mid;
+			ans++;
+		}
+	}
+
+}
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	cout<<search(n);
+	return 0;
+}
